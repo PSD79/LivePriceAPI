@@ -55,7 +55,8 @@ async def get_list():
         if not res:
             break
         for item in res:
-            results.append(item["symbol"])
+            if item["symbol"] not in results:
+                results.append(item["symbol"])
         s += limit
     return jsonify({"ok": True, "results": results}), 200
 
